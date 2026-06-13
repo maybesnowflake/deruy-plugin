@@ -17,7 +17,6 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class ReviveListener implements Listener {
@@ -133,12 +132,11 @@ public class ReviveListener implements Listener {
     }
 
     private void setBeaconColor(Location beaconLoc) {
-        Block block = beaconLoc.getBlock();
-        if (block.getState() instanceof Beacon beacon) {
-            // 진홍색 = REGENERATION 효과 (빨간계열 색상)
-            beacon.setPrimaryEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0));
-            beacon.setSecondaryEffect(new PotionEffect(PotionEffectType.REGENERATION, Integer.MAX_VALUE, 0));
-            beacon.update();
-        }
+    Block block = beaconLoc.getBlock();
+    if (block.getState() instanceof Beacon beacon) {
+        // 진홍색 = REGENERATION 효과 (빨간계열 색상)
+        beacon.setPrimaryEffect(PotionEffectType.REGENERATION);
+        beacon.setSecondaryEffect(PotionEffectType.REGENERATION);
+        beacon.update();
     }
 }
