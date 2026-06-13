@@ -1,0 +1,21 @@
+name: HardcorePlugin
+version: 1.0.0
+main: com.hardcore.plugin.HardcorePlugin
+api-version: "1.21"
+description: Custom Hardcore Server Plugin
+authors: [Custom]
+
+commands:
+  hcpause:
+    description: 특정 플레이어를 PAUSE 목록에 추가/제거
+    usage: /hcpause <add|remove|list> [player]
+    permission: hardcoreplugin.admin
+  hcrevive:
+    description: 부활권 아이템 지급
+    usage: /hcrevive <player>
+    permission: hardcoreplugin.admin
+
+permissions:
+  hardcoreplugin.admin:
+    description: 관리자 명령어
+    default: op

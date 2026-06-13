@@ -1,0 +1,10 @@
+# HardcorePlugin 설정 파일
+
+# PAUSE 대상 플레이어 목록 (체력 0 → 1 변환, PAUSE 채팅 표시)
+pause-players: []
+
+# 비콘 부활 유지 시간 (초) - 이 시간 동안 부서지지 않아야 부활 완료
+beacon-revive-time: 120
+
+# 세계 건축 높이 제한 (최대 Y축)
+build-height-limit: 601
