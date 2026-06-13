@@ -1,0 +1,28 @@
+name: Build HardcorePlugin
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - run: mvn package -B -f HardcorePlugin/pom.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HardcorePlugin
+          path: HardcorePlugin/target/HardcorePlugin-*.jar
+      - uses: softprops/action-gh-release@v2
+        if: github.ref == 'refs/heads/main'
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: "Build #${{ github.run_number }}"
+          files: HardcorePlugin/target/HardcorePlugin-*.jar
+          token: ${{ secrets.GITHUB_TOKEN }}
